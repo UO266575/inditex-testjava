@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface PriceRepository extends JpaRepository<PriceRepositoryEntity, Long> {
 
     @Query("""
-                SELECT p FROM PriceEntity p
+                SELECT p FROM PriceRepositoryEntity p
                 WHERE p.productId = :productId
                 AND p.brandId = :brandId
                 AND :applicationDate BETWEEN p.startDate AND p.endDate

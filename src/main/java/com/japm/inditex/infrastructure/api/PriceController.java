@@ -6,6 +6,7 @@ import com.japm.inditex.domain.models.Price;
 import com.japm.inditex.model.PriceControllerDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.time.OffsetDateTime;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/api/v1")
 public class PriceController implements PricesApi {
 
     private final PriceService priceService;
@@ -25,7 +27,7 @@ public class PriceController implements PricesApi {
     }
 
     private PriceControllerDTO convertToReponse(Price price) {
-        return new PriceControllerDTO(price.brandId(),price.startDate(),price.endDate(),price.priceList(),
+        return new PriceControllerDTO(price.brandId(), price.startDate(), price.endDate(), price.priceList(),
                 price.productId(), price.price(), price.currency());
     }
 
