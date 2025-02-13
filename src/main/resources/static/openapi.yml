@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: "Inditex Price API"
+  description: "API to manage prices."
+  version: "1.0.0"
+
+servers:
+  - url: "http://localhost:8080/api/v1"
+    description: "Servidor local"
+
+tags:
+  - name: "Prices"
+    description: "Manage prices"
+
+paths:
+  /prices:
+    get:
+      tags:
+        - "Prices"
+      summary: "Obtain applicable price"
+      description: "Returns the product price applicable for a product of a specific brand on a specific date."
+      operationId: "getApplicablePrices"
+      parameters:
+        - name: "applicationDate"
+          in: "query"
+          description: "Desired date to consult"
+          required: true
+          schema:
+            type: "string"
+            format: "date-time"
+            example: "2020-06-14T10:00:00"
+        - name: "productId"
+          in: "query"
+          description: "Product ID"
+          required: true
+          schema:
+            type: "integer"
+            example: 12345
+        - name: "brandId"
+          in: "query"
+          description: "Brand ID"
+          required: true
+          schema:
+            type: "integer"
+            example: 9
+      responses:
+        "200":
+          description: "Price retrieved correctly"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PriceDTO"
+        "404":
+          description: "Price not found"
+
+components:
+  schemas:
+    PriceDTO:
+      type: "object"
+      properties:
+        brandId:
+          type: "integer"
+          example: 9
+        startDate:
+          type: "string"
+          format: "date-time"
+          example: "2020-06-14T00:00:00"
+        endDate:
+          type: "string"
+          format: "date-time"
+          example: "2020-12-31T23:59:59"
+        priceList:
+          type: "integer"
+          example: 1
+        productId:
+          type: "integer"
+          example: 12345
+        price:
+          type: "number"
+          format: "double"
+          example: 35.50
+        currency:
+          type: "string"
+          example: "EUR"
