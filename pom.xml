@@ -125,7 +125,13 @@
 								<sourceFolder>src/main/java/</sourceFolder>
 								<delegatePattern>true</delegatePattern>
 								<interfaceOnly>true</interfaceOnly>
+								<generateConstructors>true</generateConstructors>
+								<dateLibrary>java8-localdatetime</dateLibrary>
 								<skipDefaultInterface>true</skipDefaultInterface>
+								<additionalModelTypeAnnotations>@lombok.Builder</additionalModelTypeAnnotations>
+								<additionalModelTypeAnnotations>@lombok.NoArgsConstructor</additionalModelTypeAnnotations>
+								<additionalModelTypeAnnotations>@lombok.AllArgsConstructor</additionalModelTypeAnnotations>
+								<useLombok>true</useLombok>
 							</configOptions>
 						</configuration>
 					</execution>

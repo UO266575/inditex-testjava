@@ -35,6 +35,7 @@ paths:
           required: true
           schema:
             type: "integer"
+            format: "int64"
             example: 12345
         - name: "brandId"
           in: "query"
@@ -42,6 +43,7 @@ paths:
           required: true
           schema:
             type: "integer"
+            format: "int64"
             example: 9
       responses:
         "200":
@@ -49,17 +51,18 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PriceDTO"
+                $ref: "#/components/schemas/PriceControllerDTO"
         "404":
           description: "Price not found"
 
 components:
   schemas:
-    PriceDTO:
+    PriceControllerDTO:
       type: "object"
       properties:
         brandId:
           type: "integer"
+          format: "int64"
           example: 9
         startDate:
           type: "string"
@@ -74,10 +77,11 @@ components:
           example: 1
         productId:
           type: "integer"
+          format: "int64"
           example: 12345
         price:
           type: "number"
-          format: "double"
+          format: "bigdecimal"
           example: 35.50
         currency:
           type: "string"
